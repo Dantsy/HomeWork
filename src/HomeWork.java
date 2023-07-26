@@ -9,3 +9,4 @@ public class HomeWork {
  System.out.println("Program result: " + encodedFullName );
  }
 }
+
