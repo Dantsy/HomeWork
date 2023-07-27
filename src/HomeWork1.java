@@ -9,11 +9,11 @@ import java.util.Scanner;
 
             String[][] options = {
                     {"Java", "Python", "C++"},
-                    {"Windows", "Linux", "MacOS"},
+                    {"Linux", "Windows", "MacOS"},
                     {"Python", "Java", "C#"}
             };
 
-            int[] answers = {1, 1, 1};
+            int[] answers = {1, 2, 1};
 
             int score = 0;
             Scanner scanner = new Scanner(System.in);
