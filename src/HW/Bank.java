@@ -1,8 +1,5 @@
 package HW;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Bank {
     private Map<Client, List<Account>> clientAccounts;
@@ -27,7 +24,8 @@ public class Bank {
         return clientAccounts.getOrDefault(client, new ArrayList<>());
     }
 
-    public Client findClient(Account account) {
-        return accountClients.get(account);
+    public Optional<Client> findClient(Account account) {
+        Client client = accountClients.get(account);
+        return Optional.ofNullable(client);
     }
 }
