@@ -26,7 +26,7 @@ public class Main {
 
         // Поиск клиента по счету
         Client client = bank.findClient(anastasiaAccount);
-        System.out.println("\nКлиент, владеющий счетом " + anastasiaAccount.getAccountNumber() + ":");
+        System.out.println("\nКлиент, владелец счета " + anastasiaAccount.getAccountNumber() + ":");
         System.out.println("Возраст: " + client.getAge());
     }
 }
