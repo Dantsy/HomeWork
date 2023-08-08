@@ -1,5 +1,5 @@
 package HomeWork3;
-// Сортировка пузырьком
+
 public class Bubl {
     public static void main(String[] args) {
         int[] arr = {8, 4, 15, 1, 7};
