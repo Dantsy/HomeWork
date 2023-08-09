@@ -27,7 +27,3 @@ public class Game {
         }
     }
 }
-// Интерфейс для кости
-interface Dice {
-    int roll();
-}
