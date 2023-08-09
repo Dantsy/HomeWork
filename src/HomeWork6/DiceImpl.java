@@ -1,7 +1,10 @@
 package HomeWork6;
 
 import java.util.Random;
-
+// Интерфейс для кости
+interface Dice {
+    int roll();
+}
 public class DiceImpl implements Dice {
     private final Random random = new Random();
 
