@@ -1,5 +1,6 @@
 package HW6;
 
+
 public class Player {
     private String name;
 

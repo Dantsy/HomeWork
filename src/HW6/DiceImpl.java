@@ -1,5 +1,6 @@
 package HW6;
 
+
 interface Dice {
     int roll();
 }
