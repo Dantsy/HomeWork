@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Студенты</title>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+
+      th, td {
+        border: 1px solid black;
+        padding: 8px;
+      }
+    </style>
+</head>
+<body>
+<h1>Студенты</h1>
+
+<form id="studentForm">
+    <label for="name">Имя студента:</label>
+    <input type="text" id="name" required>
+
+    <label for="birthdate">Дата рождения:</label>
+    <input type="date" id="birthdate" required>
+
+    <label for="gender">Пол:</label>
+    <select id="gender">
+        <option value="М">Мужчина</option>
+        <option value="Ж">Женщина</option>
+    </select>
+
+    <button type="submit">Добавить</button>
+</form>
+
+<table id="studentTable">
+    <thead>
+    <tr>
+        <th>Имя студента</th>
+        <th>Пол</th>
+        <th>Дата рождения</th>
+        <th>Возраст</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Здесь будут добавляться строки с данными студентов -->
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="3">Средний возраст студентов</td>
+        <td id="averageAgeCell"></td>
+    </tr>
+    </tfoot>
+</table>
+
+<script>
+      document.getElementById('studentForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var name = document.getElementById('name').value;
+        var birthdate = document.getElementById('birthdate').value;
+        var gender = document.getElementById('gender').value;
+
+        var age = calculateAge(birthdate);
+
+        insertStudentRow(name, gender, birthdate, age);
+        updateAverageAge();
+
+        document.getElementById('name').value = '';
+        document.getElementById('birthdate').value = '';
+        document.getElementById('gender').value = 'М';
+      });
+
+      function calculateAge(birthdate) {
+        var today = new Date();
+        var birthdate = new Date(birthdate);
+        var age = today.getFullYear() - birthdate.getFullYear();
+        var monthDiff = today.getMonth() - birthdate.getMonth();
+
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthdate.getDate())) {
+          age--;
+        }
+
+        return age;
+      }
+
+      function insertStudentRow(name, gender, birthdate, age) {
+        var table = document.getElementById('studentTable');
+        var row = table.getElementsByTagName('tbody')[0].insertRow();
+
+        var nameCell = row.insertCell(0);
+        var genderCell = row.insertCell(1);
+        var birthdateCell = row.insertCell(2);
+        var ageCell = row.insertCell(3);
+
+        nameCell.textContent = name;
+        genderCell.textContent = gender;
+        birthdateCell.textContent = birthdate;
+        ageCell.textContent = age;
+      }
+
+      function updateAverageAge() {
+        var table = document.getElementById('studentTable');
+        var rowCount = table.rows.length - 2;
+        var totalAge = 0;
+
+        if (rowCount > 0) {
+          for (var i = 1; i < rowCount + 1; i++) {
+            var ageCell = table.rows[i].cells[3];
+            totalAge += parseInt(ageCell.textContent);
+          }
+
+          var averageAge = totalAge / rowCount;
+          document.getElementById('averageAgeCell').textContent = averageAge.toFixed(2);
+        } else {
+          document.getElementById('averageAgeCell').textContent = '';
+        }
+      }
+    </script>
+</body>
+</html>
