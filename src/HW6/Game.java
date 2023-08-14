@@ -1,7 +1,5 @@
 package HW6;
 
-
-
 public class Game {
     private final Dice dice;
     private final GameWinnerPrinter winnerPrinter;
@@ -12,15 +10,19 @@ public class Game {
     }
 
     public void playGame(Player player1, Player player2) {
-        int resultPlayer1 = dice.roll();
-        int resultPlayer2 = dice.roll();
+        int player1Result = dice.roll();
+        int player2Result = dice.roll();
 
-        if (resultPlayer1 > resultPlayer2) {
-            winnerPrinter.printWinner(player1);
-        } else if (resultPlayer2 > resultPlayer1) {
-            winnerPrinter.printWinner(player2);
+        Player winner;
+        if (player1Result > player2Result) {
+            winner = player1;
+        } else if (player2Result > player1Result) {
+            winner = player2;
         } else {
-            winnerPrinter.printDraw();
+            System.err.println("Ничья!");
+            return;
         }
+
+        winnerPrinter.printWinner(winner);
     }
 }

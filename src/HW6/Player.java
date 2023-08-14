@@ -1,8 +1,7 @@
 package HW6;
 
-
 public class Player {
-    private String name;
+    private final String name;
 
     public Player(String name) {
         this.name = name;
@@ -10,8 +9,5 @@ public class Player {
 
     public String getName() {
         return name;
-    }
-    public int getScore() {
-        return 0;
     }
 }
