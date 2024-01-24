@@ -14,7 +14,16 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation 'com.google.guava:guava:31.0.1-jre'
 }
-
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'HelloOtus'
+        )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
 test {
     useJUnitPlatform()
 }
